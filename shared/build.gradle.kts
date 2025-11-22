@@ -3,9 +3,9 @@ import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompilationTask
 
 plugins {
-    alias(libs.plugins.kotlinMultiplatform)
+    alias(libs.plugins.kotlin.multiplatform)
     alias(libs.plugins.android.kmp.library)
-    alias(libs.plugins.kotlinSerialization)
+    alias(libs.plugins.kotlin.serialization)
     alias(libs.plugins.ksp)
     alias(libs.plugins.room)
 }
@@ -13,8 +13,8 @@ plugins {
 kotlin {
     androidLibrary {
         namespace = "az.pashabank.starterkmp"
-        compileSdk = libs.versions.android.compileSdk.get().toInt()
-        minSdk = libs.versions.android.minSdk.get().toInt()
+        compileSdk = libs.versions.androidCompileSdk.get().toInt()
+        minSdk = libs.versions.androidMinSdk.get().toInt()
 
         withJava() // enable java compilation support
         withHostTestBuilder {}.configure {}
@@ -23,12 +23,8 @@ kotlin {
         }
 
         compilations.configureEach {
-            compileTaskProvider.configure {
-                compilerOptions {
-                    jvmTarget.set(
-                        JvmTarget.JVM_11
-                    )
-                }
+            compilerOptions.configure {
+                jvmTarget.set(JvmTarget.JVM_17)
             }
         }
     }
