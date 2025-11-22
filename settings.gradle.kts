@@ -15,3 +15,4 @@ dependencyResolutionManagement {
 
 rootProject.name = "ma-starter-kmp"
 include(":shared")
+include(":domain")

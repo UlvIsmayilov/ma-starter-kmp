@@ -61,6 +61,9 @@ kotlin {
             //DataStore
             implementation(libs.androidx.datastore)
             implementation(libs.androidx.datastore.preferences)
+
+            //Date
+            implementation(libs.kotlinx.datetime)
         }
 
         commonTest.dependencies {
