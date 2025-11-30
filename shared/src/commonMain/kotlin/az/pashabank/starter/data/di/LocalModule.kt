@@ -11,7 +11,7 @@ import az.pashabank.starter.data.local.transaction.TransactionLocalDataSource
 import az.pashabank.starter.data.local.transaction.TransactionLocalDataSourceImpl
 import org.koin.dsl.module
 
-val localDataModule = module {
+val localModule = module {
     // Databases
     single {
         createRoomDatabase<CustomerDatabase>(

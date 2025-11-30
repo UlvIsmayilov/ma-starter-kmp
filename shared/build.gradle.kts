@@ -52,6 +52,8 @@ kotlin {
             api(libs.ktor.core)
             implementation(libs.ktor.logging)
             implementation(libs.ktor.auth)
+            implementation(libs.ktor.content.negotiation)
+            implementation(libs.ktor.serialization.json)
 
 
             //Room
