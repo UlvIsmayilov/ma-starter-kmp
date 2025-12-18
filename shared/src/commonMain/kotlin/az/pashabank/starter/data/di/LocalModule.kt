@@ -6,9 +6,12 @@ import az.pashabank.starter.data.local.card.CardLocalDataSourceImpl
 import az.pashabank.starter.data.local.customer.CustomerDatabase
 import az.pashabank.starter.data.local.customer.CustomerLocalDataSource
 import az.pashabank.starter.data.local.customer.CustomerLocalDataSourceImpl
+import az.pashabank.starter.data.local.settings.AppSettingsDataSourceImpl
+import az.pashabank.starter.data.local.settings.createDataStore
 import az.pashabank.starter.data.local.transaction.TransactionDatabase
 import az.pashabank.starter.data.local.transaction.TransactionLocalDataSource
 import az.pashabank.starter.data.local.transaction.TransactionLocalDataSourceImpl
+import az.pashabank.starter.domain.repository.AppSettingsDataSource
 import org.koin.dsl.module
 
 val localModule = module {
@@ -50,4 +53,12 @@ val localModule = module {
     single { get<CustomerDatabase>().customerDao() }
     single { get<CardDatabase>().cardDao() }
     single { get<TransactionDatabase>().transactionDao() }
+
+    // Settings
+    single { createDataStore() }
+    factory<AppSettingsDataSource> {
+        AppSettingsDataSourceImpl(
+            dataStore = get()
+        )
+    }
 }

@@ -1,3 +1,5 @@
+@file:Suppress("UNCHECKED_CAST")
+
 package az.pashabank.starter.data.di
 
 import io.ktor.client.engine.HttpClientEngineConfig
